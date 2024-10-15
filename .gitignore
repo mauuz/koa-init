@@ -1,0 +1,76 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+lerna-debug.log*
+.pnpm-debug.log*
+.log
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Optional directories created by npm scripts
+dist/
+build/
+coverage/
+.cache/
+tmp/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Typescript
+*.tsbuildinfo
+
+# Sentry environment files
+.sentryclirc
+
+# MacOS specific files
+.AppleDouble
+.LSOverride
+
+# VSCode Extensions
+.vscode/
+
+# Parcel-bundler cache (for apps using Parcel)
+.cache/
+
+# eslint cache
+.eslintcache
+
+# Optional eslint rule report
+.eslintcache
+
+# Others
+*.swp
+*.lock
+.pnpm-debug.log*

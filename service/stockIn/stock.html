@@ -1,0 +1,1606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Expires" content="1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>采购单管理</title>
+    <link rel="shortcut icon" href="/js/media/image/favicon.ico" />
+        <!-- BEGIN GLOBAL MANDATORY STYLES -->
+                <link href="/js/media/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+                <link href="/js/media/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+                <link href="/js/media/css/style-metro.css" rel="stylesheet" type="text/css"/>
+                <link href="/js/media/css/style.css" rel="stylesheet" type="text/css"/>
+                <link href="/js/media/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+                <!-- END GLOBAL MANDATORY STYLES -->
+
+                <!-- added by gaoyang 20131028 core css -->
+                <link href="/css/common.css" rel="stylesheet" type="text/css"/>
+                <link href="/js/artDialog5.0/skins/default.css" rel="stylesheet" type="text/css"/>
+                <link href="/js/sortabletable/sortabletable.css" rel="stylesheet" type="text/css"/>
+                <link href="/css/treebar.css" rel="stylesheet" type="text/css"/>
+                <link href="/css/pageStyle.css" rel="stylesheet" type="text/css"/>
+
+                <!-- page css -->
+                <link rel="stylesheet" type="text/css" href="/js/media/css/datepicker.css" />
+                <link rel="stylesheet" type="text/css" href="/js/media/css/bootstrap-fileupload.css" />
+                <link rel="stylesheet" type="text/css" href="/js/media/css/timepicker.css" />
+
+                <link href="/js/select2/select2.min.css" rel="stylesheet"  type="text/css"/>
+
+                <!-- added by gaoyang 20131102 core js-->
+                <script src="/js/media/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/bootstrap.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery.slimscroll.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery.blockui.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/bootstrap-datepicker.js" type="text/javascript"></script>
+                <script src="/js/media/js/bootstrap-timepicker.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/app.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery.validate.min.js" type="text/javascript"></script>
+                <script src="/js/media/js/jquery.validate.message_cn.js" type="text/javascript"></script>
+                <script src="/js/artDialog5.0/artDialog.min.js" type="text/javascript"></script>
+                <script src="/js/sortabletable/sortabletable.js" type="text/javascript"></script>
+                <script src="/js/initPageLoad.js" type="text/javascript"></script>
+                <script src="/js/media/js/common.js" type="text/javascript"></script>
+
+                <script src="/js/select2/select2.min.js" type="text/javascript" charset="UTF-8"></script>
+</head>
+<body>
+<script language="javascript">
+  bodyOnLoadScript = "";
+</script>
+
+
+<div id="mainId">
+
+
+<form method="POST" name="goldPurchaseNoteTable">
+        <input type="hidden" name="purchaseID" value="purchaseNote.purchaseID"/>
+        <input type="hidden" name="state1" value="purchaseNote.state1"/>
+        <input type="hidden" name="state" value="purchaseNote.state"/>
+        <input type="hidden" name="receiveStatus" value="purchaseNote.receiveStatus"/>
+        <input type="hidden" name="view_command" value=""/>
+        <input type="hidden" name="table_command" value=""/>
+<div class="page-container row-fluid">
+  <!-- BEGIN PAGE -->
+  <div class="page-content">
+    <!-- BEGIN PAGE CONTAINER-->
+    <div class="container-fluid">
+        <!-- BEGIN PAGE HEADER-->
+      <div class="row-fluid">
+        <div class="span12">
+          <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+          <ul class="breadcrumb">
+            <li>
+              <i class="icon-home"></i>
+              <span>采购数据管理</span>
+              <i class="icon-angle-right"></i>
+            </li>
+            <li>
+              <span>采购单管理</span>
+            </li>
+          </ul>
+          <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+      </div>
+    <!-- END PAGE HEADER-->
+          <!-- BEGIN PAGE CONTENT-->
+      <div class="row-fluid">
+         <div class="span12">
+          <!-- BEGIN EXAMPLE TABLE PORTLET-->
+            <table class="portlet box grey" style="width:100%">
+               <tr><td>
+                    <div class="portlet-title">
+                   <div class="actions">
+                       <button check="" class="btn blue" id="addBtn" name="cmd_0" type="button" onclick="javascript:openUrl('newPurchaseNote')"><i class="icon-plus"></i>添加</button>&nbsp;
+                       <button check="" class="btn blue" id="updBtn" name="editPurchaseNote" type="button" onclick="javascript:mysubmit()"><i class="icon-pencil"></i>修改</button>&nbsp;
+                       <button check="" class="btn red delete" data-target="" id="delBtn" data-toggle="modal" name="removePurchaseNote" type="button" onclick="javascript:doCommand('removePurchaseNote', true, '删除数据不可恢复,确 
+定要删除吗?', 'delBtn', true);"><i class="icon-trash"></i>删除</button>&nbsp;
+                       <button check="" class="btn blue" data-target="" id="receiveBtn" data-toggle="modal" name="ckReceiveBtnPurchaseNote" type="button" onclick="javascript:doAlert('checkReceivePurchaseNote', true, '随意收货可能
+会给他人带来麻烦,您确定要收货吗?', 'receiveBtn')">收货</button>&nbsp;
+                       <button check="" class="btn blue" name="ckPurchaseNoteDetail" type="button" onclick="javascript:doCommand('ckPurchaseNoteDetail', true, null)">明细收货</button>&nbsp;
+                       <button check="" class="btn blue" data-target="" id="checkBtn" data-toggle="modal" name="ckeditPurchaseNote" type="button" onclick="javascript:doAlert('checkPurchaseNote', true, '随意复核可能会给他人带来麻 
+烦,您确定要复核吗?', 'checkBtn')">复核</button>&nbsp;
+                       <button check="" class="btn red" data-target="" id="cancel" data-toggle="modal" name="cancelPurchaseNote" type="button" onclick="javascript:doAlert('cancelPurchaseNote', true, '您确定要撤销吗?', 'cancel')">
+<i class="icon-trash"></i>撤销</button>&nbsp;
+                       <button check="" class="btn blue" name="returnPurchaseNote" type="button" onclick="javascript:myReturnSubmit()"><i class="icon-thumbs-down"></i>退货</button>&nbsp;
+                       <button check="" class="btn blue" name="ckPurchaseNoteDetail" type="button" onclick="javascript:doCommand('purchaseNoteDetailHidden', true, null)">明细隐藏</button>&nbsp;
+                       <button check="" class="btn blue" name="creditNotePur" type="button" onclick="javascript:myAppSubmit()">红字</button>&nbsp;
+                       <button check="" class="btn blue" name="cmd_10" type="button" onclick="javascript:doCommand('queryPurchaseNote', false, null)"><i class="icon-search"></i>查询</button>&nbsp;
+                       <button id="approveBtn" check="" class="btn blue" name="approvePurchaseNote" type="button" onclick="javascript:doCommand('browsePurchaseNoteApprove', true, null)">审批</button>&nbsp;
+                       <button check="" class="btn blue" name="goodsDepositBtn" type="button" onclick="javascript:goodsDeposit()">外采入库</button>&nbsp;
+                       <button check="" class="btn blue" data-target="" id="returnBtn" data-toggle="modal" name="ckReturnPurchaseNote" type="button" onclick="javascript:doAlert('checkPurchaseNoteByReturn', true, '您确定要更新审批
+状态吗?', 'returnBtn')">下单</button>&nbsp;
+                       <button check="" class="btn blue" name="editPurchaseNoteRemark" type="button" onclick="javascript:doCommand('editPurchaseNoteRemark', true, null)">备注</button>&nbsp;
+                       <button check="" class="btn yellow" name="sendPurchaseNoteMail" type="button" onclick="javascript:doCommand('sendPurchaseNoteMail', true, null)">邮件发送</button>&nbsp; 
+                       <button check="" class="btn yellow" name="newImpPurchaseNote" type="button" onclick="javascript:doCommand('newImpPurchaseNote', true, null)"><i class="icon-print"></i>入库导入</button>&nbsp;
+                       <button check="" class="btn yellow" name="queryLogisticsTrack" type="button" onclick="javascript:doCommand('queryLogisticsTrack', true, null)"><i class="icon-print"></i>物流跟踪</button>&nbsp;
+                       <button check="" class="btn yellow" name="cmd_18" type="button" onclick="javascript:doCommand('newExportPurchaseNote', true, null)"><i class="icon-print"></i>打印</button>&nbsp;
+                       <button check="" class="btn yellow" name="batchExportPurchaseNoteView" type="button" onclick="javascript:doCommand('batchExportPurchaseNoteView', false, null)"><i class="icon-print"></i>批量打印</button>&nb
+sp;
+                       <button class="btn yellow" data-target="" name="excel_button" type="button" onclick="javascript:exportbrowsePurchaseNoteExcel();"><i class="icon-print"></i>Excel</button>&nbsp;
+                   </div>
+
+                   <div class="tools">
+                       <a href="browsePurchaseNote?page_current=1&command=setpage" class="reload"></a>
+                   </div>
+                </div>
+                </td></tr>
+                <tr><td>
+                 <div class="portlet-body">
+                      <div id="wrapper" class="dataTables_wrapper form-inline" role="grid">
+
+
+                  <table class="table table-bordered table-full-width dataTable" id="table_1">
+                    <thead>
+                      <tr role="row">
+                          <th style="width: 24px;" class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label=""></th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>序号</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>采购单编号</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>订单编号</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>核算号</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>船名</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>创建人</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>客户简称</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>供应商简称</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>供应商全称</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>结算金额</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>发货</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>收货</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>状态</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>审批状态</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>创建日期</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>复核人</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>复核日期</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>备注</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>用途</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>联系电话</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>联系人</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>修改人</th>
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample_2" rowspan="1" colspan="1" nowrap>修改日期</th>
+                      </tr>
+                    </thead>
+                    <tbody role="alert" aria-live="polite" aria-relevant="all">
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2428123S;2;2;2', 0)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="1"> <label class="wrap30">1</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2428123S">
+SUP-2428123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402790S">  
+SUS-2402790S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024101008</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="Golden Zhejiang">  <label class=""> Golden Zhejiang</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">张芝菊</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="上海韦加贸易有限公司"> <label class="">C489</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="奥斯特上海贸易公司"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips=" 
+奥斯特上海贸易公司" popovers="" href="browseGoodsSupplierDtl?companyID=上海奥斯特">
+上海奥斯特</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="奥斯特上海贸易公司"> <label class="wrap200">奥斯特上海贸易公司</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 513.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已复核" style="width:60px"> <label class="wrapAll 2" style="width:60px">已复核</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20241010</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">孙诗勇</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20241013</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="18896981911"> <label class="wrap100">18896981911</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">孙震</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">张芝菊</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20241011</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2427123S;7;2;2', 1)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="2"> <label class="wrap30">2</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2427123S">
+SUP-2427123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402672S">  
+SUS-2402672S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024092802</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="HAN TONG LUCKY">  <label class=""> HAN TONG LUCKY</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">徐松云</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="上海广欣船务"> <label class="">C333</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="TB-玉环阀门五金"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="TB- 
+玉环阀门五金" popovers="" href="browseGoodsSupplierDtl?companyID=TB-玉环阀门五金">
+TB-玉环阀门五金</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="TB-玉环阀门五金"> <label class="wrap200">TB-玉环阀门五金</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 34.80&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="未审批" style="width:60px"> <label class="wrapAll 1" style="width:60px">未审批</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240928</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">黄鹏铭</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240930</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">徐松云</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240928</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2426123S;2;2;2', 2)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="3"> <label class="wrap30">3</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2426123S">
+SUP-2426123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402588S">  
+SUS-2402588S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024092406</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="LOA PEACE">  <label class=""> LOA PEACE</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">张芝菊</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="Liberty One (Asia) Company Limited(联舶威）"> <label class="">C459</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="青岛华奥焊割（等离子）"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tip
+s="青岛华奥焊割（等离子）" popovers="" href="browseGoodsSupplierDtl?companyID=网-华奥焊割">
+网-华奥焊割</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="青岛华奥焊割（等离子）"> <label class="wrap200">青岛华奥焊割（等离子）</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 44.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已复核" style="width:60px"> <label class="wrapAll 2" style="width:60px">已复核</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240924</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">黄鹏铭</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240928</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2425123S;7;2;2', 3)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="4"> <label class="wrap30">4</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2425123S">
+SUP-2425123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402484S">  
+SUS-2402484S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024091301</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="海康轮">  <label class=""> HAI KANG</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="广东省珠江海运有限公司（惠博航运）（GNG OCEAN）"> <label class="">C0085</label>&nbsp;&nbsp;</div>        
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="金士顿华胜店-TB"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="金士
+顿华胜店-TB" popovers="" href="browseGoodsSupplierDtl?companyID=tb436666579-TB">
+tb436666579-TB</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="金士顿华胜店-TB"> <label class="wrap200">金士顿华胜店-TB</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 32.80&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240914</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">周延山</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240918</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2424123S;7;2;1', 4)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="5"> <label class="wrap30">5</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2424123S">
+SUP-2424123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402157S">  
+SUS-2402157S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024081705</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="恒基168">  <label class=""> 恒基168</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">王晨思</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="舟山市优威诺船舶服务有限公司"> <label class="">C618</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="运满满物流平台"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="运满 
+满物流平台" popovers="" href="browseGoodsSupplierDtl?companyID=运满满">
+运满满</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="运满满物流平台"> <label class="wrap200">运满满物流平台</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 1,200.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  &nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="未审批" style="width:60px"> <label class="wrapAll 1" style="width:60px">未审批</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240905</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">王晨思</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240905</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2423123S;2;2;2', 5)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="6"> <label class="wrap30">6</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2423123S">
+SUP-2423123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402302S">  
+SUS-2402302S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024082703</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="广航2">  <label class=""> GNG CONCORD 2</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">邱郑莹</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="广东省珠江海运有限公司（惠博航运）（GNG OCEAN）"> <label class="">C0085</label>&nbsp;&nbsp;</div>        
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="上海隆卿船务有限公司"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips=
+"上海隆卿船务有限公司" popovers="" href="browseGoodsSupplierDtl?companyID=上海隆卿">
+上海隆卿</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="上海隆卿船务有限公司"> <label class="wrap200">上海隆卿船务有限公司</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 5.77&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已复核" style="width:60px"> <label class="wrapAll 2" style="width:60px">已复核</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="未审批" style="width:60px"> <label class="wrapAll 1" style="width:60px">未审批</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240828</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">黄鹏铭</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20241008</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2422123S;2;2;2', 6)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="7"> <label class="wrap30">7</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2422123S">
+SUP-2422123S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402212S">  
+SUS-2402212S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024081604</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="Golden Fulham">  <label class=""> Golden Fulham</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">张芝菊</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="上海韦加贸易有限公司"> <label class="">C489</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="镇江百克灵船舶科技有限公司"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称"
+ tips="镇江百克灵船舶科技有限公司" popovers="" href="browseGoodsSupplierDtl?companyID=百克灵">
+百克灵</a>
+&nbsp;&nbsp;</div>                            
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="镇江百克灵船舶科技有限公司"> <label class="wrap200">镇江百克灵船舶科技有限公司</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 240.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已复核" style="width:60px"> <label class="wrapAll 2" style="width:60px">已复核</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240820</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">真文辉</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240823</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="13094984999"> <label class="wrap100">13094984999</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">杨帆?</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421239S;7;2;2', 7)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="8"> <label class="wrap30">8</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421239S">
+SUP-2421239S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="展鹏数码专营店-TM"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="展
+鹏数码专营店-TM" popovers="" href="browseGoodsSupplierDtl?companyID=展鹏数码专营店-TM">
+展鹏数码专营店-TM</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="展鹏数码专营店-TM"> <label class="wrap200">展鹏数码专营店-TM</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 99.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240820</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240819</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421238S;7;2;2', 8)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="9"> <label class="wrap30">9</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421238S">
+SUP-2421238S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">高孔丽</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="TB 上海浦陆迈航海仪器厂"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" ti
+ps="TB 上海浦陆迈航海仪器厂" popovers="" href="browseGoodsSupplierDtl?companyID=TB 上海浦陆迈航海仪器厂">
+TB 上海浦陆迈航海仪器厂</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="TB 上海浦陆迈航海仪器厂"> <label class="wrap200">TB 上海浦陆迈航海仪器厂</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 30.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240822</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="13918189567"> <label class="wrap100">13918189567</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">高孔丽</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240820</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421237S;7;2;2', 9)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="10"> <label class="wrap30">10</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421237S">
+SUP-2421237S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="青春文具馆-TB"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="青春文
+具馆-TB" popovers="" href="browseGoodsSupplierDtl?companyID=青春文具馆-TB">
+青春文具馆-TB</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="青春文具馆-TB"> <label class="wrap200">青春文具馆-TB</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 58.50&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240819</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240817</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421236S;7;2;2', 10)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="11"> <label class="wrap30">11</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421236S">
+SUP-2421236S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="欧米熙旗舰店"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="欧米熙 
+旗舰店" popovers="" href="browseGoodsSupplierDtl?companyID=欧米熙旗舰店-TB">
+欧米熙旗舰店-TB</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="欧米熙旗舰店"> <label class="wrap200">欧米熙旗舰店</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 70.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="未审批" style="width:60px"> <label class="wrapAll 1" style="width:60px">未审批</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240817</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240816</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421235S;7;2;2', 11)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="12"> <label class="wrap30">12</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421235S">
+SUP-2421235S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">张芝菊</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="TB philips飞利浦妙朵专卖店"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称"
+ tips="TB philips飞利浦妙朵专卖店" popovers="" href="browseGoodsSupplierDtl?companyID=TB philips飞利浦妙朵专卖店">
+TB philips飞利浦妙朵专卖店</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="TB philips飞利浦妙朵专卖店"> <label class="wrap200">TB philips飞利浦妙朵专卖店</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 84.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240828</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">张芝菊</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240826</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421234S;7;2;2', 12)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="13"> <label class="wrap30">13</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421234S">
+SUP-2421234S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">高孔丽</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="乒乓战将-TB"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="乒乓战将
+-TB" popovers="" href="browseGoodsSupplierDtl?companyID=乒乓战将-TB">
+乒乓战将-TB</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="乒乓战将-TB"> <label class="wrap200">乒乓战将-TB</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 262.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240819</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">高孔丽</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240815</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even odd">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421233S;7;2;2', 13)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="14"> <label class="wrap30">14</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421233S">
+SUP-2421233S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="美家净水器滤芯售后店-TB"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" ti
+ps="美家净水器滤芯售后店-TB" popovers="" href="browseGoodsSupplierDtl?companyID=美家净水器滤芯售后店-TB">
+美家净水器滤芯售后店-TB</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="美家净水器滤芯售后店-TB"> <label class="wrap200">美家净水器滤芯售后店-TB</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 4,376.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">潘罗轩</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240902</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240830</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                                    <tr class="even">
+                              <td class="sorting_1" nowrap >
+                                <div class="radio"><span class=""><input type="radio" value="" name="goldPurchaseNoteTable_radio" onClick="goldPurchaseNoteTable_select('SUP-2421232S;7;2;2', 14)" /></span></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="15"> <label class="wrap30">15</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="采购单编号" name="" tips="" popovers="" href="browsePurchaseNoteDetail?purchaseID=SUP-2421232S">
+SUP-2421232S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <a onmousemove="" onmouseout="" width="" label="订单编号" name="deliveryNo" tips="" popovers="" href="browseGoodsDeliveryDetail?deliveryNo=SUS-2402020S">  
+SUS-2402020S</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">N2024071003</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕續輪">  <label class=""> Asian Enduranc</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="裕民航運股份有限公司(U-ming)"> <label class="">C229</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="格兰仕企业直卖店-TB"> <a onmousemove="" onmouseout="" width="" name="companyID" label="供应商简称" tips="
+格兰仕企业直卖店-TB" popovers="" href="browseGoodsSupplierDtl?companyID=格兰仕企业直卖店-TB">
+格兰仕企业直卖店-TB</a>
+&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title="格兰仕企业直卖店-TB"> <label class="wrap200">格兰仕企业直卖店-TB</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap align="right">
+                                                  <div class="sorting_1"> 598.00&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  已收货&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已结清" style="width:60px"> <label class="wrapAll 7" style="width:60px">已结清</label></div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips wrapAll" data-trigger="hover" data-original-title="已下单" style="width:60px"> <label class="wrapAll 6" style="width:60px">已下单</label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240813</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">姚子涛</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240818</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap250"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1">  外采直供&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1">
+                                <div class="sorting_1 tooltips" data-trigger="hover" data-original-title=""> <label class="wrap100"></label></div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class=""></label>&nbsp;&nbsp;</div>
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">俞灿佳</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                              <td class="sorting_1" nowrap >
+                                                  <div class="sorting_1"> <label class="">20240817</label>&nbsp;&nbsp;</div>
+
+                              </td>
+                      </tr>
+                              </tbody>
+                        </table>
+                      </div>
+                 </div>
+                        </td></tr>
+                        <tr><td>
+
+                      <div class="row-fluid">
+                                <div class="pageShow">
+                                        <div class="dataTables_paginate paging_bootstrap pagination">
+                                                <ul>
+                                        <li class="prev disabled"><a href="#">&lt&lt</a></li>
+                                        <li class="prev disabled"><a href="#">&lt</a></li>
+
+                                                                               <li class="active"><a href="javascript:document.location='browsePurchaseNote?page_current=' + 1 + '&command=setpage'">1</a></li>
+
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 2 + '&command=setpage'">2</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 3 + '&command=setpage'">3</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 4 + '&command=setpage'">4</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 5 + '&command=setpage'">5</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 6 + '&command=setpage'">6</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 7 + '&command=setpage'">7</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 8 + '&command=setpage'">8</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 9 + '&command=setpage'">9</a></li>
+                                                                           <li><a href="javascript:document.location='browsePurchaseNote?page_current=' + 10 + '&command=setpage'">10</a></li>
+                                                                        <li class="next"><a id="next" href=browsePurchaseNote?page_current=2&command=next">&gt</a></li>
+                                                                        <li class="next"><a href="browsePurchaseNote?page_current=22&command=last">&gt&gt</a></li>
+                                                </ul>
+                                        </div>
+                                 </div>
+                         <div class="pageLabel">
+                                共<span class="bold">22</span>页,<span class="bold">322</span>条记录 到第
+                                <input type="text" id="page_current" placeholder="" class="m-wrap page" value="1">
+                                页
+                                        <a href="javascript:document.location='browsePurchaseNote?page_current=' + $('#page_current').val() + '&command=setpage'" class="btn icn-only pageBtn"><i class="m-icon-swapright"></i></a>  
+                                </div>
+                      </div>
+                        </td></tr>
+                </table>
+                <!-- END EXAMPLE TABLE PORTLET-->
+                 </div>
+      </div>
+      <!-- END PAGE CONTENT-->
+    </div>
+    <!-- END PAGE CONTAINER-->
+  </div>
+  <!-- END PAGE -->
+</div>
+</form>
+<div id="delModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true" style="display: none;">
+        <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <label class="delModelHead">删除确认</label>
+        </div>
+        <div class="modal-body">
+                <h4 id="delModelLabel"></h4>
+        </div>
+        <div class="modal-footer">
+                <button class="btn rtn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button type="button" class="btn red delete" data-dismiss="modal" id="delModelBtn" onclick=""><i class="icon-trash"></i>删除</button>
+        </div>
+</div>
+<div id="alertModel" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel3" aria-hidden="true" style="display: none;">
+        <div class="alter-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <label class="alertModelHead">保存提示</label>
+        </div>
+        <div class="modal-body">
+                <h4 id="alertModelLabel"></h4>
+        </div>
+        <div class="modal-footer">
+                <button class="btn rtn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                <button type="button" class="btn yellow" data-dismiss="modal" id="alertModelBtn" onclick=""><i class="icon-ok"></i>保存</button>
+        </div>
+</div>
+
+
+  <script charset="gbk" src="/js/com/sinwa/ship/goodsstorage/browsePurchaseNote.js" language="javascript" >
+  </script>
+
+  <script charset="gbk" src="/js/com/sinwa/ship/goodsstorage/browsePurchaseNoteHandle.js" language="javascript" >
+  </script>
+
+
+
+</div>
+
+</body>
+
+<script language="javascript">
+        $(function(){
+                if(bodyOnLoadScript != null && bodyOnLoadScript == 'createnewwindow();'){
+                        eval(bodyOnLoadScript);
+                }
+        })
+</script>
+</HTML>
